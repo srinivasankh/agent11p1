@@ -16,7 +16,7 @@ Agent 11Plus is a conversational study companion tailored to U.K. 11+ exam prepa
 ### Local Setup
 1. **Clone the repo**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/srinivasankh/agent11p1.git
    cd agent11p1
    ```
 2. **Create a virtual environment (optional but recommended)**
