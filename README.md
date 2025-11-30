@@ -43,6 +43,16 @@ python main.py
 ```
 You will see a welcome prompt. Try instructions such as `I want to revise vocabulary` or `I want to revise maths`. Type `exit` to stop.
 
+### Running Locally with the ADK CLI
+If you prefer the ADK developer workflow you can let the toolkit scaffold a local web runner for the app.
+
+1. Ensure `google-adk` is installed (e.g., `pip install google-adk`) and that your `.env` is populated with the required keys.
+2. From the project root run:
+   ```bash
+   adk web
+   ```
+3. The ADK CLI will launch the default web experience in your browser against your local build, so you can iterate on tools and coordinator logic with the familiar ADK dashboards.
+
 ### Testing & Troubleshooting
 - If the CLI cannot find your API key, confirm the `.env` file exists and matches the names expected by `load_dotenv()` in `main.py`.
 - Use `uv pip list` (or `pip list`) to verify that `google-adk` and `google-genai` installed successfully.
