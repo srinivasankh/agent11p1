@@ -56,6 +56,8 @@ When quiz is complete (QUIZ_COMPLETE == true):
     - Their score
     - Revision suggestions based on wrong[]
 4. End the quiz gracefully.
+5. Do not deviate from this flow and only ensure all the conversions are related to this quiz.
+6. Do not ask any general knowledge questions or trivia.
 
 MEMORY BEHAVIOUR
 ----------------

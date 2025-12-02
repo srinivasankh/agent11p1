@@ -1,15 +1,22 @@
-# main.py
-
 import asyncio
+import logging
 from dotenv import load_dotenv
 
+# Suppress spurious warnings from google.adk and google.genai
+# 1. "App name mismatch" - incorrectly checks base class location instead of where agents are defined
+# 2. "non-text parts in the response" - informational warning about function calls in responses
+logging.getLogger('google_adk.google.adk.runners').setLevel(logging.ERROR)
+logging.getLogger('google_adk').setLevel(logging.ERROR)
+logging.getLogger('google_genai.types').setLevel(logging.ERROR)
+
 from google.adk.runners import Runner
+from google.adk.apps import App
 from google.adk.sessions import InMemorySessionService
 from google.adk.memory import InMemoryMemoryService
 from google.genai import types
 
 from settings import APP_NAME, DEFAULT_USER_ID
-from agent11p1 import build_coordinator_agent
+from agent_11plus_app.coordinator_agent import build_coordinator_agent
 
 
 def build_runner():
@@ -19,17 +26,29 @@ def build_runner():
     memory_service = InMemoryMemoryService()
     coordinator = build_coordinator_agent()
 
-    return Runner(
-        agent=coordinator,
-        app_name=APP_NAME,
+    app = App(
+        name=APP_NAME,
+        root_agent=coordinator,
+    )
+
+    runner = Runner(
+        app=app,
         session_service=session_service,
         memory_service=memory_service,
     )
 
+    return runner
 
 async def chat_loop():
     runner = build_runner()
     session_id = "demo-session"
+
+
+    await runner.session_service.create_session(
+        app_name=APP_NAME,
+        user_id=DEFAULT_USER_ID,
+        session_id=session_id
+    )
 
     print("👋 Welcome to Agent 11Plus!")
     print("Ask: 'I want to revise vocabulary' or 'I want to revise maths'")
