@@ -60,3 +60,6 @@ If you prefer the ADK developer workflow you can let the toolkit scaffold a loca
 
 ### Acknowledgements
 Huge thanks to Kaggle's [5-Day AI Agent course](https://www.kaggle.com/learn-guide/5-day-agents) for the structure and inspiration that guided this project, and to the [Kaggle Agents Intensive Capstone Project](https://www.kaggle.com/competitions/agents-intensive-capstone-project) that motivated building and polishing this demo.
+
+### Contributions
+Contributions are welcome! Please feel free to submit pull requests or open issues.
